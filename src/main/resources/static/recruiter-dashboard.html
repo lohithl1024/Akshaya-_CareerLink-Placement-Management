@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>Akshaya Placements | Recruiter Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="site-header">
+        <a class="brand" href="/index.html">
+            <span class="brand-mark">AP</span>
+            <span class="brand-copy">
+                <strong>Akshaya Placements</strong>
+                <small>Akshaya Institute of Technology</small>
+            </span>
+        </a>
+        <nav class="site-nav" id="siteNav"></nav>
+        <div class="header-actions" id="headerActions"></div>
+    </header>
+
+    <main class="page-main">
+        <section class="hero-grid">
+            <article class="hero-panel hero-panel-primary">
+                <span class="eyebrow" id="dashboardRoleBadge">Recruiter Workspace</span>
+                <h1 id="dashboardHeroTitle">Manage placement activity with control.</h1>
+                <p class="lead" id="dashboardHeroSubtitle">
+                    Post openings, review companies, and keep the hiring pipeline moving.
+                </p>
+                <div class="hero-actions">
+                    <a class="button secondary" href="/jobs.html">View Listings</a>
+                    <a class="button ghost" href="/applications.html">Manage Applications</a>
+                </div>
+            </article>
+
+            <aside class="hero-panel hero-panel-secondary">
+                <span class="eyebrow subdued">Workspace Snapshot</span>
+                <div class="summary-list" id="managerSummary"></div>
+            </aside>
+        </section>
+
+        <div class="alert hidden" id="pageMessage" role="status" aria-live="polite"></div>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="content-grid">
+            <section class="panel" id="companyPanel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Companies</span>
+                        <h2>Company directory</h2>
+                        <p class="panel-copy">Add the hiring company first, then select it when creating a job opportunity.</p>
+                    </div>
+                </div>
+                <form id="companyForm" class="form-stack">
+                    <label class="field">
+                        <span>Company Name</span>
+                        <input id="companyName" type="text" placeholder="TechNova Pvt Ltd">
+                    </label>
+                    <label class="field">
+                        <span>Description</span>
+                        <textarea id="companyDescription" placeholder="Company profile, culture, and hiring focus"></textarea>
+                    </label>
+                    <button class="button primary" id="companyButton" type="submit">Add Company</button>
+                </form>
+                <div class="summary-list" id="companiesList"></div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Post Job</span>
+                        <h2>Create a hiring opportunity</h2>
+                        <p class="panel-copy">Keep the posting concise and easy for students to scan.</p>
+                    </div>
+                </div>
+                <form id="jobForm" class="form-stack">
+                    <input id="jobId" type="hidden">
+                    <div class="form-grid">
+                        <label class="field">
+                            <span>Title</span>
+                            <input id="jobTitle" type="text" placeholder="Java Backend Developer" required>
+                        </label>
+                        <label class="field">
+                            <span>Company</span>
+                            <select id="jobCompanyId" required></select>
+                        </label>
+                    </div>
+                    <label class="field">
+                        <span>Eligibility</span>
+                        <input id="jobEligibility" type="text" placeholder="B.Tech CSE, 2026 batch, 7.0 CGPA+" required>
+                    </label>
+                    <div class="form-grid">
+                        <label class="field"><span>Eligible Branches</span><input id="jobEligibleBranches" type="text" placeholder="All branches or Computer Science Engineering" required></label>
+                        <label class="field"><span>Graduation Year</span><input id="jobGraduationYear" type="number" min="2020" max="2040" value="2026" required></label>
+                    </div>
+                    <div class="form-grid">
+                        <label class="field"><span>Minimum CGPA</span><input id="jobMinimumCgpa" type="number" min="0" max="10" step="0.01" placeholder="7.00" required></label>
+                        <label class="field"><span>Maximum Active Backlogs</span><input id="jobMaximumBacklogs" type="number" min="0" step="1" value="0" required></label>
+                    </div>
+                    <label class="field">
+                        <span>Description</span>
+                        <textarea id="jobDescription" placeholder="Role summary, responsibilities, and expectations" required></textarea>
+                    </label>
+                    <div class="inline-actions">
+                        <button class="button primary" id="jobButton" type="submit">Post Job</button>
+                        <button class="button ghost hidden" id="cancelEditButton" type="button">Cancel Edit</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Recent Jobs</span>
+                    <h2>Current job postings</h2>
+                </div>
+                <a class="button secondary" href="/applications.html">Review Applications</a>
+            </div>
+            <div class="cards-grid management-grid" id="managedJobsGrid"></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Latest Applications</span>
+                    <h2>Recent candidate activity</h2>
+                </div>
+                <a class="button secondary" href="/applications.html">Open Application Manager</a>
+            </div>
+            <div class="cards-grid management-grid application-management-grid" id="applicationPreviewGrid"></div>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="/js/recruiter-dashboard.js"></script>
+</body>
+</html>

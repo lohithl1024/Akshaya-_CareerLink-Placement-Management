@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>Akshaya Placements | Student Profile</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="site-header">
+        <a class="brand" href="/index.html">
+            <span class="brand-mark">AP</span>
+            <span class="brand-copy">
+                <strong>Akshaya Placements</strong>
+                <small>Akshaya Institute of Technology</small>
+            </span>
+        </a>
+        <nav class="site-nav" id="siteNav"></nav>
+        <div class="header-actions" id="headerActions"></div>
+    </header>
+
+    <main class="page-main">
+        <section class="hero-grid">
+            <article class="hero-panel hero-panel-primary">
+                <span class="eyebrow">Student Workspace</span>
+                <h1 id="studentHeroTitle">Track your placement journey.</h1>
+                <p class="lead" id="studentHeroSubtitle">
+                    Keep your profile current, monitor active roles, and follow your application progress.
+                </p>
+                <div class="hero-actions">
+                    <a class="button secondary" href="/placements.html">Browse Opportunities</a>
+                    <a class="button ghost" href="/applications.html">My Applications</a>
+                </div>
+            </article>
+
+            <aside class="hero-panel hero-panel-secondary">
+                <span class="eyebrow subdued">Account</span>
+                <div class="summary-list" id="accountSnapshot"></div>
+            </aside>
+        </section>
+
+        <div class="alert hidden" id="pageMessage" role="status" aria-live="polite"></div>
+
+        <section class="stats-grid" id="statsGrid"></section>
+
+        <section class="content-grid">
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Profile Snapshot</span>
+                        <h2>Your profile</h2>
+                        <p class="panel-copy">Keep these details current before applying.</p>
+                    </div>
+                </div>
+                <div class="summary-list" id="profileSummary"></div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Update Profile</span>
+                        <h2>Update profile</h2>
+                        <p class="panel-copy">Short, accurate details improve application quality.</p>
+                    </div>
+                </div>
+                <form id="profileForm" class="form-stack">
+                    <label class="field">
+                        <span>Branch</span>
+                        <input id="profileBranch" type="text" placeholder="Computer Science" required>
+                    </label>
+                    <div class="form-grid">
+                        <label class="field">
+                            <span>Graduation Year</span>
+                            <input id="profileGraduationYear" type="number" min="2020" max="2040" required>
+                        </label>
+                        <label class="field">
+                            <span>CGPA</span>
+                            <input id="profileCgpa" type="number" min="0" max="10" step="0.01" required>
+                        </label>
+                    </div>
+                    <label class="field">
+                        <span>Active Backlogs</span>
+                        <input id="profileActiveBacklogs" type="number" min="0" step="1" required>
+                    </label>
+                    <label class="field">
+                        <span>Skills</span>
+                        <textarea id="profileSkills" placeholder="Spring Boot, Hibernate, MySQL, REST APIs" required></textarea>
+                    </label>
+                    <label class="field">
+                        <span>Resume Link / File Path</span>
+                        <input id="profileResume" type="text" placeholder="https://... or local path" required>
+                    </label>
+                    <button class="button primary" id="profileButton" type="submit">Save Profile</button>
+                </form>
+            </section>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Available Jobs</span>
+                    <h2>Open roles</h2>
+                </div>
+                <a class="button secondary" href="/jobs.html">View All Roles</a>
+            </div>
+            <div class="cards-grid" id="availableJobsGrid"></div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-header">
+                <div>
+                    <span class="eyebrow">Recent Applications</span>
+                    <h2>Latest submissions</h2>
+                </div>
+                <a class="button secondary" href="/applications.html">Open Applications</a>
+            </div>
+            <div class="cards-grid" id="recentApplicationsGrid"></div>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="/js/student-dashboard.js"></script>
+</body>
+</html>

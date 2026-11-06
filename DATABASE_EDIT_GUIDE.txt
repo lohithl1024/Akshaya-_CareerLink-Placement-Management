@@ -1,0 +1,203 @@
+CareerLink Database Edit Guide
+
+Database connection
+
+Use PowerShell:
+
+mysql -uroot -p"K04"
+
+Then inside MySQL:
+
+USE careerlink;
+SHOW TABLES;
+
+
+UI to database map
+
+1. Login / Register page
+- Main frontend file:
+  C:\Users\LENOVO\Desktop\Major_Project\src\main\resources\static\index.html
+- Main tables:
+  users
+  students
+- Edit here if you want to change:
+  user name -> users.name
+  email -> users.email
+  role -> users.role
+  student branch -> students.branch
+  student skills -> students.skills
+  resume -> students.resume
+
+2. Student dashboard
+- Main frontend file:
+  C:\Users\LENOVO\Desktop\Major_Project\src\main\resources\static\student-dashboard.html
+- Main tables:
+  users
+  students
+  jobs
+  companies
+  applications
+
+3. Recruiter dashboard
+- Main frontend file:
+  C:\Users\LENOVO\Desktop\Major_Project\src\main\resources\static\recruiter-dashboard.html
+- Main tables:
+  companies
+  jobs
+  applications
+  users
+
+4. Jobs page
+- Main frontend file:
+  C:\Users\LENOVO\Desktop\Major_Project\src\main\resources\static\jobs.html
+- Main tables:
+  jobs
+  companies
+- Edit here if you want to change:
+  job title -> jobs.title
+  description -> jobs.description
+  eligibility -> jobs.eligibility
+  company displayed -> companies.name
+  job active/closed -> jobs.active
+
+5. Applications page
+- Main frontend file:
+  C:\Users\LENOVO\Desktop\Major_Project\src\main\resources\static\applications.html
+- Main tables:
+  applications
+  jobs
+  students
+  users
+  companies
+- Edit here if you want to change:
+  application status -> applications.status
+
+
+Useful view commands
+
+See all users:
+SELECT * FROM users;
+
+See all students:
+SELECT * FROM students;
+
+See all companies:
+SELECT * FROM companies;
+
+See all jobs:
+SELECT * FROM jobs;
+
+See all applications:
+SELECT * FROM applications;
+
+
+Useful short commands
+
+See job IDs and titles:
+SELECT id, title FROM jobs ORDER BY id;
+
+See company IDs and names:
+SELECT id, name FROM companies ORDER BY id;
+
+See user IDs, names and emails:
+SELECT id, name, email FROM users ORDER BY id;
+
+See application IDs and status:
+SELECT id, student_id, job_id, status FROM applications ORDER BY id;
+
+
+Common manual update examples
+
+Change a job title:
+UPDATE jobs
+SET title = 'Frontend Flow QA 7195819'
+WHERE id = 4;
+
+Change a company name:
+UPDATE companies
+SET name = 'API Company 7184209'
+WHERE id = 5;
+
+Change job description:
+UPDATE jobs
+SET description = 'Work on Spring Boot APIs and backend services.'
+WHERE id = 3;
+
+Change job eligibility:
+UPDATE jobs
+SET eligibility = 'B.Tech CSE, 7+ CGPA'
+WHERE id = 3;
+
+Change a student branch:
+UPDATE students
+SET branch = 'Computer Science'
+WHERE id = 1;
+
+Change student skills:
+UPDATE students
+SET skills = 'Java, Spring Boot, MySQL'
+WHERE id = 1;
+
+Change resume:
+UPDATE students
+SET resume = 'aditya_resume.pdf'
+WHERE id = 1;
+
+Change user email:
+UPDATE users
+SET email = 'student@careerlink.com'
+WHERE id = 3;
+
+Change application status:
+UPDATE applications
+SET status = 'SHORTLISTED'
+WHERE id = 1;
+
+
+Check the result after editing
+
+Run the same select again, for example:
+
+SELECT id, title FROM jobs ORDER BY id;
+SELECT id, name FROM companies ORDER BY id;
+SELECT id, name, email FROM users ORDER BY id;
+
+
+Readable application report
+
+SELECT a.id,
+       u.name AS student_name,
+       j.title AS job_title,
+       c.name AS company_name,
+       a.status
+FROM applications a
+JOIN students s ON a.student_id = s.id
+JOIN users u ON s.user_id = u.id
+JOIN jobs j ON a.job_id = j.id
+JOIN companies c ON j.company_id = c.id;
+
+
+Current timestamp-style names already normalized
+
+Jobs:
+SELECT id, title FROM jobs ORDER BY id;
+
+Companies:
+SELECT id, name FROM companies ORDER BY id;
+
+
+Be careful with these columns
+
+- users.password
+- students.user_id
+- jobs.company_id
+- jobs.recruiter_id
+- applications.student_id
+- applications.job_id
+
+Only change those if you know exactly what you are doing.
+
+
+Exit MySQL
+
+exit

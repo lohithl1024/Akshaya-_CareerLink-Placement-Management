@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>Akshaya Placements | Job Listings</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="site-header">
+        <a class="brand" href="/index.html">
+            <span class="brand-mark">AP</span>
+            <span class="brand-copy">
+                <strong>Akshaya Placements</strong>
+                <small>Akshaya Institute of Technology</small>
+            </span>
+        </a>
+        <nav class="site-nav" id="siteNav"></nav>
+        <div class="header-actions" id="headerActions"></div>
+    </header>
+
+    <main class="page-main">
+        <section class="hero-grid">
+            <article class="hero-panel hero-panel-primary">
+                <span class="eyebrow">Placement Board</span>
+                <h1>Find the right opening, faster.</h1>
+                <p class="lead">
+                    Search roles by title, company, or eligibility and move directly into the application flow.
+                </p>
+            </article>
+
+            <aside class="hero-panel hero-panel-secondary">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow subdued">Board Access</span>
+                        <h2>Open to every visitor</h2>
+                        <p class="panel-copy">The board is public. Applying remains secured by role-based login.</p>
+                    </div>
+                </div>
+                <div class="summary-list">
+                    <div class="summary-item">
+                        <strong>Guests</strong>
+                        <p>Browse openings and review company opportunities.</p>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Students</strong>
+                        <p>Filter active roles and move directly to application submission.</p>
+                    </div>
+                    <div class="summary-item">
+                        <strong>Recruiters & Admins</strong>
+                        <p>Review public listings and return to your workspace when needed.</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <div class="alert hidden" id="pageMessage" role="status" aria-live="polite"></div>
+
+        <section class="content-grid">
+            <section class="panel filters-panel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Filters</span>
+                        <h2>Refine openings</h2>
+                        <p class="panel-copy">Keep it simple. Use only the filters you need.</p>
+                    </div>
+                </div>
+                <form id="filterForm" class="form-stack">
+                    <label class="field">
+                        <span>Job Title</span>
+                        <input id="filterTitle" type="text" placeholder="Backend, analyst, developer">
+                    </label>
+                    <label class="field">
+                        <span>Company</span>
+                        <select id="filterCompanyId"></select>
+                    </label>
+                    <label class="field">
+                        <span>Eligibility</span>
+                        <input id="filterEligibility" type="text" placeholder="CGPA, branch, batch">
+                    </label>
+                    <label class="field">
+                        <span>Visibility</span>
+                        <select id="filterActive">
+                            <option value="true">Active jobs only</option>
+                            <option value="">All jobs</option>
+                            <option value="false">Inactive jobs only</option>
+                        </select>
+                    </label>
+                    <div class="inline-actions">
+                        <button class="button primary" type="submit">Apply Filters</button>
+                        <button class="button ghost" id="resetFiltersButton" type="button">Reset</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="panel">
+                <div class="toolbar">
+                    <div>
+                        <span class="eyebrow">Results</span>
+                        <h2>Available roles</h2>
+                        <p class="helper-text" id="jobsMeta">Loading jobs...</p>
+                    </div>
+                    <a class="button secondary" href="/index.html">Sign In</a>
+                </div>
+                <div class="cards-grid" id="jobsGrid"></div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="/js/jobs-page.js"></script>
+</body>
+</html>

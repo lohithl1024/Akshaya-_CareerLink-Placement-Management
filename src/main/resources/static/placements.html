@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>Akshaya Placements Department</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="site-header">
+        <a class="brand" href="/placements.html"><span class="brand-mark">AP</span><span class="brand-copy"><strong>Akshaya Placements</strong><small>Akshaya Institute of Technology</small></span></a>
+        <nav class="site-nav" id="siteNav"></nav><div class="header-actions" id="headerActions"></div>
+    </header>
+    <main class="page-main placement-page">
+        <section class="placement-hero">
+            <div>
+                <span class="eyebrow placement-eyebrow">Akshaya Institute of Technology</span>
+                <h1>Your Career Starts Here.</h1>
+                <p>Explore opportunities, prepare for recruitment, and take the next step towards your professional journey.</p>
+                <div class="hero-actions"><a class="button secondary" href="#opportunities">Explore opportunities</a><a class="button ghost light" href="#calendar">View recruitment calendar</a></div>
+            </div>
+            <aside class="placement-hero-note"><span>Placement notice</span><strong>All listings below are demonstration records.</strong><p>They are illustrative only and must be verified by the placement department before students act on them.</p></aside>
+        </section>
+
+        <section class="placement-stats" id="placementStats" aria-label="Placement summary"></section>
+
+        <section class="panel placement-toolbar" id="opportunities">
+            <div class="panel-header"><div><span class="eyebrow">Opportunity discovery</span><h2>Recruitment opportunities</h2><p class="panel-copy" id="resultMeta"></p></div></div>
+            <div class="placement-filter-grid">
+                <label class="field"><span>Search</span><input id="placementSearch" type="search" placeholder="Company or job role"></label>
+                <label class="field"><span>Company</span><select id="companyFilter"><option value="">All companies</option></select></label>
+                <label class="field"><span>Opportunity type</span><select id="typeFilter"><option value="">All types</option><option>Internship</option><option>Full-Time</option></select></label>
+                <label class="field"><span>Eligible branch</span><select id="branchFilter"><option value="">All branches</option><option>Computer Science Engineering (CSE)</option><option>Information Science Engineering (ISE)</option><option>Awaiting confirmation</option></select></label>
+                <label class="field"><span>Recruitment date</span><select id="dateFilter"><option value="">Any date</option><option value="2026-11-03">03 Nov 2026</option><option value="2026-11-07">07 Nov 2026</option><option value="2026-11-15">15 Nov 2026</option></select></label>
+                <label class="field"><span>Status</span><select id="statusFilter"><option value="">All statuses</option><option>Open</option><option>Upcoming</option><option>Coming Soon</option><option>Awaiting Confirmation</option></select></label>
+                <label class="field"><span>Sort by</span><select id="sortFilter"><option value="date">Recruitment date</option><option value="company">Company name</option><option value="type">Opportunity type</option></select></label>
+                <div class="filter-actions"><button class="button ghost" id="clearPlacementFilters" type="button">Clear filters</button></div>
+            </div>
+        </section>
+
+        <section class="placement-card-grid" id="placementGrid" aria-live="polite"></section>
+
+        <section class="panel coming-panel"><div class="panel-header"><div><span class="eyebrow subdued">Expected hiring</span><h2>What’s Coming Next?</h2><p class="panel-copy">These illustrative opportunities are not confirmed campus drives. Verified details will replace them when available.</p></div></div><div class="coming-grid" id="comingGrid"></div></section>
+
+        <section class="panel calendar-panel" id="calendar"><div class="toolbar"><div><span class="eyebrow">Campus recruitment calendar</span><h2>November 2026</h2><p class="panel-copy">Demonstration drive dates in chronological order.</p></div><div class="view-toggle" role="group" aria-label="Calendar view"><button class="button secondary active" data-view="list" type="button">List</button><button class="button ghost" data-view="calendar" type="button">Calendar</button></div></div><div id="calendarContent"></div></section>
+    </main>
+</div>
+
+<dialog class="opportunity-dialog" id="opportunityDialog"><button class="dialog-close" id="dialogClose" aria-label="Close details" type="button">×</button><div id="dialogContent"></div></dialog>
+<script type="module" src="/js/placements-page.js"></script>
+</body>
+</html>

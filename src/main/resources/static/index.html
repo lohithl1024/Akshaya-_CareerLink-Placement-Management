@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+    <title>Akshaya Placements | Login & Register</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<!--
+Development Notes
+- Demo Admin: admin@careerlink.com / admin123
+- Demo Recruiter: recruiter@careerlink.com / recruiter123
+- Demo Student: student@careerlink.com / student123
+- Public registration is intentionally limited to STUDENT and RECRUITER by backend rules.
+- Frontend session, storage, and API notes are documented in /src/main/resources/static/js/api.js.
+-->
+<div class="site-shell">
+    <header class="site-header">
+        <a class="brand" href="/index.html">
+            <span class="brand-mark">AP</span>
+            <span class="brand-copy">
+                <strong>Akshaya Placements</strong>
+                <small>Akshaya Institute of Technology</small>
+            </span>
+        </a>
+        <nav class="site-nav" id="siteNav"></nav>
+        <div class="header-actions" id="headerActions"></div>
+    </header>
+
+    <main class="page-main">
+        <section class="welcome-hero">
+            <article class="welcome-copy">
+                <span class="eyebrow">Akshaya Placements Department</span>
+                <h1>Make your next opportunity count.</h1>
+                <p class="lead">
+                    A focused space for Akshaya students to discover opportunities, prepare for campus drives, and manage applications with confidence.
+                </p>
+                <div class="hero-actions">
+                    <a class="button secondary" href="#loginForm">Student Login</a>
+                    <a class="button ghost" id="createAccountLink" href="#registerForm">Create Account</a>
+                </div>
+            </article>
+
+            <aside class="placement-showcase" aria-label="Akshaya Institute of Technology Training and Placement Cell">
+                <img src="/images/akshaya-placement-cell.jpeg"
+                     alt="Akshaya Institute of Technology Training and Placement Cell"
+                     class="placement-cell-photo">
+                <div class="showcase-caption">Training &amp; Placement Cell</div>
+            </aside>
+        </section>
+
+        <div class="alert hidden" id="pageMessage" role="status" aria-live="polite"></div>
+
+        <section class="auth-area">
+            <section class="auth-intro">
+                <span class="eyebrow subdued">One simple starting point</span>
+                <h2>Everything you need for your placement journey.</h2>
+                <p>Students can explore verified openings after sign-in. Recruiters can publish opportunities and manage candidate activity.</p>
+                <div class="auth-benefits"><span>• Relevant opportunities</span><span>• Upcoming drive calendar</span><span>• Application tracking</span></div>
+            </section>
+            <section class="panel auth-card" id="loginPanel">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Login</span>
+                        <h2>Access your workspace</h2>
+                        <p class="panel-copy">Use your registered account to continue.</p>
+                    </div>
+                </div>
+                <form id="loginForm" class="form-stack">
+                    <label class="field">
+                        <span>Email</span>
+                        <input id="loginEmail" type="email" placeholder="name@careerlink.com" required>
+                    </label>
+                    <label class="field">
+                        <span>Password</span>
+                        <input id="loginPassword" type="password" placeholder="Enter your password" required>
+                    </label>
+                    <button class="button primary" id="loginButton" type="submit">Login</button>
+                </form>
+            </section>
+
+            <section class="panel auth-card">
+                <div class="panel-header">
+                    <div>
+                        <span class="eyebrow">Register</span>
+                        <h2>Create an account</h2>
+                        <p class="panel-copy">Student and recruiter access can be created here.</p>
+                    </div>
+                </div>
+                <form id="registerForm" class="form-stack">
+                    <div class="registration-banner">
+                        <strong>Student registration</strong>
+                        <span>Complete all profile and academic details to receive matching job opportunities.</span>
+                    </div>
+                    <div class="form-grid">
+                        <label class="field">
+                            <span>Name</span>
+                            <input id="registerName" type="text" placeholder="Your full name" required>
+                        </label>
+                        <label class="field">
+                            <span>Email</span>
+                            <input id="registerEmail" type="email" placeholder="you@example.com" required>
+                        </label>
+                    </div>
+                    <div class="form-grid">
+                        <label class="field">
+                            <span>Password</span>
+                            <input id="registerPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required>
+                        </label>
+                        <label class="field">
+                            <span>Role</span>
+                            <select id="registerRole" required>
+                                <option value="STUDENT">STUDENT</option>
+                                <option value="RECRUITER">RECRUITER</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="student-fields" id="studentFields">
+                        <p class="form-section-note">Student profile details — all fields below are required for eligibility matching.</p>
+                        <div class="form-grid">
+                            <label class="field">
+                                <span>Branch</span>
+                                <input id="registerBranch" type="text" placeholder="Computer Science">
+                            </label>
+                            <label class="field">
+                                <span>Resume Link / File Path</span>
+                                <input id="registerResume" type="text" placeholder="https://... or local path">
+                            </label>
+                        </div>
+                        <p class="form-section-title">Academic eligibility details</p>
+                        <div class="form-grid">
+                            <label class="field">
+                                <span>Graduation Year</span>
+                                <input id="registerGraduationYear" type="number" min="2020" max="2040" placeholder="2026">
+                            </label>
+                            <label class="field">
+                                <span>CGPA</span>
+                                <input id="registerCgpa" type="number" min="0" max="10" step="0.01" placeholder="7.50">
+                            </label>
+                        </div>
+                        <label class="field">
+                            <span>Active Backlogs</span>
+                            <input id="registerActiveBacklogs" type="number" min="0" step="1" placeholder="0">
+                        </label>
+                        <label class="field">
+                            <span>Skills</span>
+                            <textarea id="registerSkills" placeholder="Java, Spring Boot, SQL, REST APIs"></textarea>
+                        </label>
+                    </div>
+
+                    <button class="button primary" id="registerButton" type="submit">Register</button>
+                </form>
+            </section>
+        </section>
+    </main>
+</div>
+
+<script type="module" src="/js/auth-page.js"></script>
+</body>
+</html>
